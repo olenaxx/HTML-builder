@@ -19,17 +19,6 @@ const handleInput = (input) => {
   }
 };
 
-// rl.on('line', handleInput);
-
-// process.on('SIGINT', closeApplication);
-
-// function closeApplication() {
-//   console.log('Goodbye!');
-//   fileStream.close();
-//   rl.close();
-//   process.exit();
-// }
-
 const closeApplication = () => {
   console.log('Goodbye!');
   fileStream.close();
