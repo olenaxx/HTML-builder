@@ -9,22 +9,36 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-// Display a welcome message
 console.log('Welcome! Enter some text. Type "exit" to quit.');
 
-// Function to handle input
 const handleInput = (input) => {
   if (input.trim().toLowerCase() === 'exit') {
-    console.log('Goodbye!');
-    rl.close();
+    closeApplication();
   } else {
     fileStream.write(input + '\n', 'utf8');
   }
 };
 
+// rl.on('line', handleInput);
+
+// process.on('SIGINT', closeApplication);
+
+// function closeApplication() {
+//   console.log('Goodbye!');
+//   fileStream.close();
+//   rl.close();
+//   process.exit();
+// }
+
+const closeApplication = () => {
+  console.log('Goodbye!');
+  fileStream.close();
+  rl.close();
+  process.exit();
+};
+
 rl.on('line', handleInput);
 
-process.on('SIGINT', () => {
-  console.log('Goodbye!');
-  process.exit();
+rl.on('SIGINT', () => {
+  closeApplication();
 });
